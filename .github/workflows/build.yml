@@ -19,7 +19,29 @@ jobs:
       - name: Use custom edit file action
         run: |
           sed -i '/plugins {/a\    id("org.cyclonedx.bom") version "1.8.2"' "build.gradle.kts"
-          sed -i '/^$/a\ tasks.named<Jar>("bootJar") {\ dependsOn(tasks.named("cyclonedxBom"))\ from(file("$buildDir/reports")) {\ include("application.cdx.json")\ into("META-INF/sbom")\ }\ }\ \ tasks.named<Jar>("jar") {\ dependsOn(tasks.named("cyclonedxBom"))\ from(file("$buildDir/reports")) {\ include("application.cdx.json")\ into("META-INF/sbom")\ }\ }\ \ tasks.cyclonedxBom {\ outputName.set("application.cdx")\ outputFormat.set("json")\ schemaVersion.set("1.5")\ destination.set(file("build/reports"))\ includeConfigs.set(listOf("runtimeClasspath", "compileClasspath"))\ skipConfigs.set(emptyList())\ skipProjects.set(emptyList())\ }' "build.gradle.kts"
+          echo "tasks.named<Jar>(\"bootJar\") {
+            dependsOn(tasks.named(\"cyclonedxBom\"))
+            from(file(\"$buildDir/reports\")) {
+                include(\"application.cdx.json\")
+                into(\"META-INF/sbom\")
+            }
+          }
+          tasks.named<Jar>(\"jar\") {
+              dependsOn(tasks.named(\"cyclonedxBom\"))
+              from(file(\"$buildDir/reports\")) {
+                  include(\"application.cdx.json\")
+                  into(\"META-INF/sbom\")
+              }
+          }
+          tasks.cyclonedxBom {
+              outputName.set(\"application.cdx\")
+              outputFormat.set(\"json\")
+              schemaVersion.set(\"1.5\")
+              destination.set(file(\"build/reports\"))
+              includeConfigs.set(listOf(\"runtimeClasspath\", \"compileClasspath\"))
+              skipConfigs.set(emptyList())
+              skipProjects.set(emptyList())
+          }" >> build.gradle.kts
           cat "build.gradle.kts"
 
       - name: Set up JDK 17
