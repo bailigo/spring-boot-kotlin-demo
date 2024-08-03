@@ -17,8 +17,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Use custom edit file action
-        uses: bailigo/oligo-cdx-gradle-gh-action@main
-
+        uses: bailigo/oligo-cdx-gradle-gh-action/.github/actions/cyclonedx-gradle@main
+        
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
