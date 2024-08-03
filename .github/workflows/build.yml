@@ -18,6 +18,8 @@ jobs:
 
       - name: Use custom edit file action
         uses: bailigo/oligo-cdx-gradle-gh-action/.github/actions/cyclonedx-gradle@main
+        with:
+          file: 'build.gradle.kts'
         
       - name: Set up JDK 17
         uses: actions/setup-java@v3
