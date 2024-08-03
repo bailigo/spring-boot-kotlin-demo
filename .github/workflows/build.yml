@@ -32,3 +32,8 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+
+      - name: Append CycloneDX configuration
+        uses: bailigo/oligo-cdx-gradle-gh-action/.github/actions/cyclonedx-gradle@main
+        with:
+          project-directory: '.'
