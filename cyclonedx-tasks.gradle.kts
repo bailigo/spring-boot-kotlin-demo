@@ -1,6 +1,6 @@
 plugins {
-    id("org.cyclonedx.bom") version "1.8.2"
     id("org.springframework.boot") version "3.3.1"
+    id("org.cyclonedx.bom") version "1.8.2"
 }
 
 tasks.named<Jar>("bootJar") {
