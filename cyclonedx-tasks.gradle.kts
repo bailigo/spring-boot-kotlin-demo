@@ -8,6 +8,9 @@ plugins {
 	kotlin("plugin.spring") version kotlinVersion
 }
 
+repositories {
+	mavenCentral()
+}
 
 tasks.named<Jar>("bootJar") {
     dependsOn(tasks.named("cyclonedxBom"))
