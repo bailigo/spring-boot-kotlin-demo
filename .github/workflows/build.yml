@@ -32,6 +32,10 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
-        
-      - name: Use custom CycloneDX tasks action
-        run: ./gradlew -b cyclonedx-tasks.gradle.kts cyclonedxBom bootJar jar
+
+      - name: Download CycloneDX init script
+        run: |
+          curl -o cyclonedx.init.gradle.kts https://gist.githubusercontent.com/bailigo/9cfec7e4c3e3931e32b083d44c0bf3f3/raw/8e355211d1799cd7e63c69d2e8612bcc0a692665/cyclonedx.init.gradle.kts
+          
+      - name: Build with Gradle
+        run: ./gradlew --init-script cyclonedx.init.gradle.kts cyclonedxBom --info
