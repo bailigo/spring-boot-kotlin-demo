@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Package
-          path: build/libs/*.jar
+          path: build/reports/*.json
