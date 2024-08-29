@@ -15,9 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Download file via wget
-        run: wget -O $HOME/.gradle/init.gradle.kts https://gist.githubusercontent.com/bailigo/9cfec7e4c3e3931e32b083d44c0bf3f3/raw/a80b34616087a8bd55979fdf81029866657f527e/cyclonedx.init.gradle.kts
         
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -32,6 +29,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+      - name: Download file via wget
+        run: wget -O $HOME/.gradle/init.gradle.kts https://gist.githubusercontent.com/bailigo/9cfec7e4c3e3931e32b083d44c0bf3f3/raw/a80b34616087a8bd55979fdf81029866657f527e/cyclonedx.init.gradle.kts
           
       - name: Build with Gradle
         run: ./gradlew clean build
