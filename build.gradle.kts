@@ -27,6 +27,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("com.h2database:h2")
+	implementation("log4j:log4j:1.2.17")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
