@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Download CycloneDX tasks via wget
-        run: wget -O $HOME/.gradle/init.gradle.kts https://gist.githubusercontent.com/bailigo/9cfec7e4c3e3931e32b083d44c0bf3f3/raw/f0ff6ec6edf3181a0c04f36af995a75102219cbc/cyclonedx.init.gradle.kts
+        run: wget -O $HOME/.gradle/init.gradle.kts https://gist.githubusercontent.com/bailigo/9cfec7e4c3e3931e32b083d44c0bf3f3/raw/710671749f2adb6a9abcf0bfaf5ed6559d876e47/cyclonedx.init.gradle.kts
           
       - name: Build with Gradle
         run: ./gradlew clean build
