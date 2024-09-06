@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Download file via wget
+      - name: Download CycloneDX tasks via wget
         run: wget -O $HOME/.gradle/init.gradle.kts https://gist.githubusercontent.com/bailigo/9cfec7e4c3e3931e32b083d44c0bf3f3/raw/2761dd90ec3b18a1aaf93af83975c1e5f5febb0f/cyclonedx.init.gradle.kts
           
       - name: Build with Gradle
